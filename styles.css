@@ -9,7 +9,7 @@ body{
     align-items: center;
 }
 .calc{
-    height: 500px;
+    height: 90vh;
     width: 300px;
     background-color: #FFFFFF;
     border: 2px solid black;
@@ -44,7 +44,7 @@ body{
 }
 button{
     width: 60px;
-    height: 40px;
+    height: 60px;
     border-radius: 12px;
     font-size: 25px;
     border: none;
@@ -55,15 +55,23 @@ button{
     justify-content: space-between;
     align-items: center;
 }
-.number{
+.number,.cancel,.decimal{
     background-color: #243B53;
 }
 .operator{
     background-color: #4F7FFF;
 }
+.first-row{
+    margin-right: 5px;
+}
 .allclear{
+    flex: 1;
     background-color: #FF6B6B;
 }
 .equal{
+    flex: 1;
     background-color: #3A6FF7;
+}
+.last-row{
+    margin-left: 5px
 }
