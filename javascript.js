@@ -1,10 +1,14 @@
 const number_list = document.querySelectorAll(".number");
-const arr = Array.from(number_list);
+const number_arr = Array.from(number_list);
+
 const operator_list = document.querySelectorAll(".operator");
 const op_arr = Array.from(operator_list);
+
 const expression = document.querySelector(".expression");
 const result = document.querySelector(".result");
 
+const equal = document.querySelector(".equal");
+const clear = document.querySelector(".allclear");
 
 
 function add(num1,num2) {
@@ -21,65 +25,75 @@ function divide(num1,num2) {
     return num1/num2;
 }
 function operate(num1,operand,num2) {
-    let res="";
     if(operand==="+") {
-        res+=add(num1,num2);
+        return add(num1,num2);
     }
     else if(operand==="-") {
-        res+=sub(num1,num2);
+        return sub(num1,num2);
     }
     else if(operand==="*") {
-        res+=multiply(num1,num2);
+        return multiply(num1,num2);
     }
     else if(operand==="/"){
-        res+=divide(num1,num2);
+        return divide(num1,num2);
     }
-    result.append(res);
 }
-let a;
-let b;
-let op;
+let a=0;
+let b=0;
+let op="";
+
+
 function update_a(num1) {
-    let n=Number(num1);
-    a=n;
-    expression.replaceChildren();
-    expression.append(num1);
+    a=Number(num1);
 }
 function update_b(num2) {
-    let n=Number(num2);
-    b=n;
-    expression.append(num2);
+    b=Number(num2);
 }
 function update_op(operand) {
     op=operand;
-    expression.append(op);
 }
-let temp="";
-let first=true;
-for(let i=0;i<arr.length;i++) {
-    const button=arr[i];
+
+let num1="";
+let num2="";
+for(let i=0;i<number_arr.length;i++) {
+    const button=number_arr[i];
     let digit_string = button.textContent;
     button.addEventListener("click",()=>{
-        if(first) {
-            temp+=digit_string;
-            update_a(temp);
+        if(op==="") {
+            num1+=digit_string;
+            update_a(num1);
         }
         else{
-            temp=digit_string;
-            update_b(temp);
+            num2+=digit_string;
+            update_b(num2);
         }
+        expression.replaceChildren();
+        expression.textContent=`${num1}${op}${num2}`;
     })
 }
+
+
 for(let i=0;i<op_arr.length;i++) {
-    const op=op_arr[i];
-    let op_string = op.textContent;
-    op.addEventListener("click",()=>{
-        if(first) {
+    const operator=op_arr[i];
+    let op_string = operator.textContent;
+    operator.addEventListener("click",()=>{
+        if(op==="") {
             update_op(op_string);
-            first=false;
-        }
-        else{
-            operate(a,op,b);
+            expression.replaceChildren();
+            expression.textContent=`${num1}${op}${num2}`;
         }
     })
 }
+
+equal.addEventListener("click",()=>{
+    let ans=operate(a,op,b);
+    result.replaceChildren();
+    result.textContent=`${ans}`;
+})
+clear.addEventListener("click",()=>{
+    num1="";
+    num2="";
+    op="";
+    expression.replaceChildren();
+    result.replaceChildren();
+})
