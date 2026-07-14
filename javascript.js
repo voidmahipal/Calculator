@@ -82,10 +82,27 @@ for(let i=0;i<op_arr.length;i++) {
             expression.replaceChildren();
             expression.textContent=`${num1}${op}${num2}`;
         }
+        else{
+            if(num2==="") {
+                return;
+            }
+            let ans=operate(a,op,b);
+            result.replaceChildren();
+            result.textContent=`${ans}`;
+            update_op(op_string);
+            num2="";
+            num1=result.textContent;
+            expression.textContent=`${num1}${op}${num2}`;
+            update_a(result.textContent);
+
+        }
     })
 }
 
 equal.addEventListener("click",()=>{
+    if(num2==="") {
+        return;
+    }
     let ans=operate(a,op,b);
     result.replaceChildren();
     result.textContent=`${ans}`;
@@ -93,6 +110,8 @@ equal.addEventListener("click",()=>{
 clear.addEventListener("click",()=>{
     num1="";
     num2="";
+    a=0;
+    b=0;
     op="";
     expression.replaceChildren();
     result.replaceChildren();

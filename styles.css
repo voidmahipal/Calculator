@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 body{
-    background-color: #EAF2FF;
+    background-color: #0d1117;
     height: 100vh;
     display: flex;
     justify-content: center;
@@ -11,14 +11,16 @@ body{
 .calc{
     height: 90vh;
     width: 300px;
-    background-color: #FFFFFF;
-    border: 2px solid black;
+    background-color: #161b22;
+    border: 2px solid #30363d;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
     display: flex;
     flex-direction: column;
 }
 .display{
     height: 25%;
-    background-color: #DCEBFF;
+    background-color: #0a0e14;
     border: 1px solid black;
     border-radius: 12px;
     margin: 10px;
@@ -26,15 +28,27 @@ body{
     flex-direction: column;
 }
 .expression{
+    font-size: 30px;
+    color: #8b949e ;
     height: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 .result{
+    color: #58a6ff;
+    font-weight: 500;
     flex: 1;
+    font-size: 40px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
 }
 .buttons{
     border: 1px solid black;
     border-radius: 12px;
-    background-color: #F7FAFF;
+    color: #e6edf3;
+    background-color: #21262d;
     height: 20px;
     flex: 1;
     margin: 10px;
@@ -55,22 +69,27 @@ button{
     justify-content: space-between;
     align-items: center;
 }
-.number,.cancel,.decimal{
+.number,.cancel{
     background-color: #243B53;
 }
+.decimal{
+    background-color: #8b949e;
+}
 .operator{
-    background-color: #4F7FFF;
+    background-color: #39d0d8 ;
 }
 .first-row{
     margin-right: 5px;
 }
 .allclear{
     flex: 1;
-    background-color: #FF6B6B;
+    background-color: #f85149;
+    font-weight: 600;
 }
 .equal{
     flex: 1;
-    background-color: #3A6FF7;
+    background-color: #f0883e;
+    color: #1a1300;
 }
 .last-row{
     margin-left: 5px
